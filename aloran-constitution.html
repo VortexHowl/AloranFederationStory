@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Constitution of the Aloran Federation — Federal Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Barlow+Condensed:wght@300;400;500;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ────────────────────────────────────────────────── */
+    :root {
+      --forest-deep:   #0f2318;
+      --forest:        #1a3d28;
+      --forest-mid:    #2d6047;
+      --forest-light:  #4a8c6a;
+      --ocean-deep:    #0a1e30;
+      --ocean:         #0e3356;
+      --ocean-mid:     #1a5278;
+      --ocean-light:   #2e7aad;
+      --gold:          #c8922a;
+      --gold-light:    #e0b55a;
+      --gold-pale:     #f5dfa0;
+      --teal:          #1d6060;
+      --teal-light:    #2e8f8f;
+      --mist:          #8aa8b8;
+      --redwood:       #8b3a2a;
+      --cream:         #f6f1e8;
+      --parchment:     #ede6d6;
+      --parchment-dark:#d8cebc;
+      --ink:           #1a1510;
+      --ink-mid:       #3a3228;
+      --ink-light:     #6b5e50;
+      --rule:          rgba(200,146,42,0.3);
+      --rule-dark:     rgba(200,146,42,0.6);
+    }
+
+    /* ── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      background: var(--forest-deep);
+      color: var(--cream);
+      font-family: 'Lora', Georgia, serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── ARCHIVE TOP BAR ───────────────────────────────────────── */
+    .archive-bar {
+      background: var(--ocean-deep);
+      border-bottom: 1px solid var(--rule);
+      padding: 0.55rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mist);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .archive-bar a {
+      color: var(--mist);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .archive-bar a:hover { color: var(--gold-light); }
+    .archive-bar-left { display: flex; align-items: center; gap: 1.5rem; }
+    .archive-bar .dot { color: var(--gold); }
+    .archive-bar-right { display: flex; gap: 1.5rem; }
+    .year-badge {
+      background: var(--gold);
+      color: var(--forest-deep);
+      padding: 0.15rem 0.6rem;
+      border-radius: 2px;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
+    }
+
+    /* ── HERO ──────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      background: linear-gradient(165deg, var(--ocean-deep) 0%, var(--forest-deep) 45%, var(--ocean-deep) 100%);
+      padding: 5rem 2rem 4rem;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% -10%, rgba(45,96,71,0.4) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 80%, rgba(14,51,86,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 30% at 10% 90%, rgba(29,96,96,0.3) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-texture {
+      position: absolute;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c8922a' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    /* SVG Seal */
+    .seal-wrap {
+      position: relative;
+      z-index: 1;
+      margin: 0 auto 2.5rem;
+      width: 140px;
+      height: 140px;
+    }
+    .seal-wrap svg {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 24px rgba(200,146,42,0.25));
+      animation: sealGlow 4s ease-in-out infinite alternate;
+    }
+    @keyframes sealGlow {
+      from { filter: drop-shadow(0 0 16px rgba(200,146,42,0.2)); }
+      to   { filter: drop-shadow(0 0 32px rgba(200,146,42,0.45)); }
+    }
+
+    .hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      position: relative;
+      z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--cream);
+      letter-spacing: 0.02em;
+      margin-bottom: 0.5rem;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--gold-light);
+    }
+    .hero-subtitle {
+      position: relative;
+      z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--mist);
+      margin-bottom: 2.5rem;
+      letter-spacing: 0.03em;
+    }
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      text-align: center;
+      font-family: 'Barlow Condensed', sans-serif;
+    }
+    .hero-meta-item .label {
+      display: block;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+    .hero-meta-item .value {
+      display: block;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: var(--cream);
+      letter-spacing: 0.06em;
+    }
+    .hero-rule {
+      position: relative;
+      z-index: 1;
+      width: 200px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 2rem auto;
+    }
+
+    /* ── CONTEXT BANNER (FICTIONAL ARCHIVE NOTE) ───────────────── */
+    .context-band {
+      background: var(--ocean-deep);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      padding: 2.5rem 2rem;
+    }
+    .context-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .context-icon {
+      width: 44px;
+      flex-shrink: 0;
+      padding-top: 0.2rem;
+    }
+    .context-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.6rem;
+    }
+    .context-text {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 300;
+      color: var(--mist);
+      line-height: 1.75;
+    }
+    .context-text strong { color: var(--cream); font-weight: 500; }
+    .context-text em { color: var(--gold-pale); font-style: italic; }
+
+    /* ── FICTION DISCLAIMER ────────────────────────────────────── */
+    .disclaimer-band {
+      background: rgba(139,58,42,0.12);
+      border-left: 3px solid var(--redwood);
+      margin: 0;
+      padding: 1rem 2rem;
+    }
+    .disclaimer-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.78rem;
+      color: rgba(245,240,232,0.55);
+      font-style: italic;
+    }
+    .disclaimer-inner strong {
+      color: rgba(245,240,232,0.75);
+      font-style: normal;
+    }
+
+    /* ── LAYOUT WRAPPER ────────────────────────────────────────── */
+    .page-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      max-width: 1300px;
+      margin: 0 auto;
+      min-height: calc(100vh - 200px);
+    }
+
+    /* ── SIDEBAR / TABLE OF CONTENTS ───────────────────────────── */
+    .toc-sidebar {
+      background: var(--ocean-deep);
+      border-right: 1px solid rgba(200,146,42,0.15);
+      padding: 2rem 1.5rem;
+      position: sticky;
+      top: 40px;
+      height: calc(100vh - 40px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--forest-mid) transparent;
+    }
+    .toc-sidebar::-webkit-scrollbar { width: 4px; }
+    .toc-sidebar::-webkit-scrollbar-track { background: transparent; }
+    .toc-sidebar::-webkit-scrollbar-thumb { background: var(--forest-mid); border-radius: 2px; }
+
+    .toc-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { margin-bottom: 0.1rem; }
+    .toc-list a {
+      display: block;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--mist);
+      text-decoration: none;
+      padding: 0.35rem 0.6rem;
+      border-radius: 3px;
+      transition: background 0.15s, color 0.15s;
+      line-height: 1.3;
+    }
+    .toc-list a:hover {
+      background: rgba(200,146,42,0.08);
+      color: var(--gold-light);
+    }
+    .toc-list a.preamble-link { color: var(--gold-pale); font-style: italic; }
+    .toc-list .toc-num {
+      display: inline-block;
+      width: 1.4rem;
+      color: var(--gold);
+      font-size: 0.7rem;
+      flex-shrink: 0;
+    }
+    .toc-list a { display: flex; align-items: baseline; gap: 0.25rem; }
+
+    /* ── MAIN CONTENT ──────────────────────────────────────────── */
+    .main-content {
+      background: var(--cream);
+      color: var(--ink);
+      padding: 0;
+    }
+
+    /* ── PREAMBLE SECTION ──────────────────────────────────────── */
+    .preamble-section {
+      background: linear-gradient(180deg, var(--forest) 0%, var(--forest-deep) 100%);
+      color: var(--cream);
+      padding: 4rem 4rem 3.5rem;
+      border-bottom: 3px solid var(--gold);
+      position: relative;
+      overflow: hidden;
+    }
+    .preamble-section::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(200,146,42,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .section-label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+    }
+    .preamble-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--gold-pale);
+      margin-bottom: 2rem;
+      line-height: 1.2;
+    }
+    .preamble-text {
+      font-family: 'Lora', serif;
+      font-size: 1.025rem;
+      line-height: 1.85;
+      color: rgba(245,240,232,0.88);
+      max-width: 72ch;
+    }
+    .preamble-text + .preamble-text { margin-top: 1.25rem; }
+    .preamble-text em { color: var(--gold-pale); font-style: italic; }
+
+    /* ── ARTICLE SECTIONS ──────────────────────────────────────── */
+    .article-section {
+      padding: 3.5rem 4rem;
+      border-bottom: 1px solid var(--parchment-dark);
+    }
+    .article-section:nth-child(odd) { background: var(--cream); }
+    .article-section:nth-child(even) { background: var(--parchment); }
+
+    .article-number {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .article-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--forest-deep);
+      margin-bottom: 0.3rem;
+      line-height: 1.2;
+    }
+    .article-subheading {
+      font-family: 'Lora', serif;
+      font-size: 0.9rem;
+      font-style: italic;
+      color: var(--ink-light);
+      margin-bottom: 2rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--parchment-dark);
+    }
+
+    .section-heading {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--ocean);
+      margin-top: 2.25rem;
+      margin-bottom: 0.75rem;
+      padding-left: 1rem;
+      border-left: 3px solid var(--gold);
+      line-height: 1.3;
+    }
+    .section-sub-heading {
+      font-family: 'Lora', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--forest);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .body-text {
+      font-family: 'Lora', serif;
+      font-size: 0.94rem;
+      line-height: 1.85;
+      color: var(--ink-mid);
+      max-width: 72ch;
+      margin-bottom: 1rem;
+    }
+
+    .body-text strong { color: var(--ink); font-weight: 600; }
+
+    /* Numbered / lettered list items within constitution */
+    .provision-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 1rem 0 1rem 1rem;
+    }
+    .provision-list li {
+      font-family: 'Lora', serif;
+      font-size: 0.94rem;
+      line-height: 1.8;
+      color: var(--ink-mid);
+      padding: 0.5rem 0 0.5rem 2.5rem;
+      position: relative;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      max-width: 70ch;
+    }
+    .provision-list li::before {
+      content: attr(data-n);
+      position: absolute;
+      left: 0;
+      top: 0.5rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--teal);
+      min-width: 1.8rem;
+    }
+
+    /* Highlighted principle block */
+    .principle-block {
+      background: var(--forest-deep);
+      color: var(--cream);
+      border-left: 4px solid var(--gold);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      max-width: 68ch;
+    }
+    .principle-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-style: italic;
+      line-height: 1.7;
+      color: var(--gold-pale);
+    }
+    .principle-block .attrib {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-top: 0.5rem;
+    }
+
+    /* Oath box */
+    .oath-box {
+      background: linear-gradient(135deg, var(--ocean-deep) 0%, var(--forest-deep) 100%);
+      border: 1px solid var(--rule-dark);
+      padding: 2rem 2.5rem;
+      margin: 2rem 0;
+      max-width: 60ch;
+      position: relative;
+    }
+    .oath-box::before {
+      content: '"';
+      position: absolute;
+      top: -0.5rem; left: 1rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem;
+      color: var(--gold);
+      line-height: 1;
+      opacity: 0.4;
+    }
+    .oath-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--gold-pale);
+      line-height: 1.7;
+      position: relative;
+      z-index: 1;
+    }
+    .oath-source {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-top: 1rem;
+    }
+
+    /* Rights grid */
+    .rights-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    .right-card {
+      background: white;
+      border: 1px solid var(--parchment-dark);
+      border-top: 3px solid var(--teal);
+      padding: 1.25rem 1.25rem 1rem;
+    }
+    .right-card-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 0.5rem;
+    }
+    .right-card-text {
+      font-family: 'Lora', serif;
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--ink-mid);
+    }
+
+    /* Timeline for transitional */
+    .timeline {
+      margin: 1.5rem 0 1.5rem 1rem;
+      border-left: 2px solid var(--gold);
+      padding-left: 2rem;
+    }
+    .timeline-item {
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.45rem;
+      top: 0.35rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      background: var(--gold);
+      border-radius: 50%;
+      border: 2px solid var(--cream);
+    }
+    .timeline-when {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-text {
+      font-family: 'Lora', serif;
+      font-size: 0.9rem;
+      color: var(--ink-mid);
+      line-height: 1.7;
+    }
+
+    /* ── CLOSING ────────────────────────────────────────────────── */
+    .closing-section {
+      background: linear-gradient(165deg, var(--forest-deep) 0%, var(--ocean-deep) 100%);
+      padding: 4rem;
+      text-align: center;
+      color: var(--cream);
+      border-top: 3px solid var(--gold);
+    }
+    .closing-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--gold-pale);
+      max-width: 60ch;
+      margin: 0 auto 2rem;
+    }
+    .closing-signatories {
+      display: flex;
+      justify-content: center;
+      gap: 4rem;
+      flex-wrap: wrap;
+      margin-top: 2.5rem;
+    }
+    .signatory {
+      text-align: center;
+    }
+    .signatory-line {
+      width: 140px;
+      height: 1px;
+      background: var(--gold);
+      margin: 0 auto 0.5rem;
+    }
+    .signatory-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--gold-pale);
+    }
+    .signatory-title {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mist);
+      margin-top: 0.2rem;
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .footer-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--gold-light);
+      letter-spacing: 0.08em;
+      margin-bottom: 0.5rem;
+    }
+    .footer-address {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(200,180,150,0.4);
+      line-height: 1.8;
+    }
+    .footer-rule {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.25rem auto;
+      opacity: 0.4;
+    }
+    .footer-copy {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.72rem;
+      color: rgba(200,180,150,0.35);
+    }
+    .footer-fiction-note {
+      font-family: 'Barlow', sans-serif;
+      font-size: 0.68rem;
+      font-style: italic;
+      color: rgba(200,180,150,0.28);
+      margin-top: 0.5rem;
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .page-layout { grid-template-columns: 1fr; }
+      .toc-sidebar { position: static; height: auto; padding: 1.5rem; border-right: none; border-bottom: 1px solid rgba(200,146,42,0.15); }
+      .article-section { padding: 2.5rem 2rem; }
+      .preamble-section { padding: 2.5rem 2rem; }
+      .closing-section { padding: 2.5rem 2rem; }
+      .context-inner { grid-template-columns: 1fr; }
+      .context-icon { display: none; }
+      .archive-bar-right { display: none; }
+    }
+    @media (max-width: 600px) {
+      .hero { padding: 3rem 1.5rem 2.5rem; }
+      .hero-meta { gap: 1.5rem; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .closing-signatories { gap: 2rem; }
+    }
+
+    /* ── SCROLL ANIMATIONS ──────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ── ARCHIVE TOP BAR ── -->
+  <div class="archive-bar">
+    <div class="archive-bar-left">
+      <span class="year-badge">2048 AE</span>
+      <span>Aloran Federal Archive</span>
+      <span class="dot">◆</span>
+      <span>Office of Constitutional Records</span>
+    </div>
+    <div class="archive-bar-right">
+      <a href="#preamble">Preamble</a>
+      <span class="dot">·</span>
+      <a href="#article-i">Articles</a>
+      <span class="dot">·</span>
+      <a href="#article-xiii">Transitional</a>
+    </div>
+  </div>
+
+  <!-- ── HERO ── -->
+  <header class="hero">
+    <div class="hero-texture"></div>
+
+    <!-- Aloran Seal SVG -->
+    <div class="seal-wrap">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer ring -->
+        <circle cx="100" cy="100" r="96" fill="none" stroke="#c8922a" stroke-width="2"/>
+        <circle cx="100" cy="100" r="88" fill="none" stroke="#c8922a" stroke-width="0.6" stroke-dasharray="4 3"/>
+        <!-- Background fill -->
+        <circle cx="100" cy="100" r="87" fill="#0a1e30" opacity="0.85"/>
+        <!-- Ocean wave band -->
+        <clipPath id="circle-clip"><circle cx="100" cy="100" r="86"/></clipPath>
+        <g clip-path="url(#circle-clip)">
+          <!-- Forest base -->
+          <rect x="0" y="90" width="200" height="110" fill="#1a3d28" opacity="0.5"/>
+          <!-- Mountain peaks -->
+          <polygon points="30,90 60,40 90,90" fill="#0e3356" opacity="0.7"/>
+          <polygon points="70,90 105,28 140,90" fill="#1a3d28" opacity="0.8"/>
+          <polygon points="110,90 145,45 180,90" fill="#0e3356" opacity="0.7"/>
+          <!-- Snow caps -->
+          <polygon points="70,90 105,28 140,90 130,75 105,45 80,75" fill="white" opacity="0.15"/>
+          <!-- Ocean band at bottom -->
+          <rect x="0" y="130" width="200" height="70" fill="#0e3356" opacity="0.6"/>
+          <!-- Sun / horizon glow -->
+          <ellipse cx="100" cy="90" rx="50" ry="8" fill="#c8922a" opacity="0.12"/>
+        </g>
+        <!-- Center star / emblem -->
+        <g transform="translate(100,82)">
+          <!-- Triangle representing 3 states -->
+          <polygon points="0,-18 15.6,9 -15.6,9" fill="none" stroke="#c8922a" stroke-width="1.5"/>
+          <!-- 3 dots for 3 states -->
+          <circle cx="0" cy="-18" r="2.5" fill="#c8922a"/>
+          <circle cx="15.6" cy="9" r="2.5" fill="#c8922a"/>
+          <circle cx="-15.6" cy="9" r="2.5" fill="#c8922a"/>
+          <!-- Center dot -->
+          <circle cx="0" cy="0" r="2" fill="#e0b55a"/>
+        </g>
+        <!-- Text ring -->
+        <path id="top-arc" d="M 100,100 m -72,0 a 72,72 0 1,1 144,0" fill="none"/>
+        <path id="bot-arc" d="M 100,100 m -66,0 a 66,66 0 0,0 132,0" fill="none"/>
+        <text font-family="'Barlow Condensed', sans-serif" font-size="10" font-weight="600" letter-spacing="4" fill="#c8922a" text-anchor="middle">
+          <textPath href="#top-arc" startOffset="50%">ALORAN FEDERAL ARCHIVE</textPath>
+        </text>
+        <text font-family="'Barlow Condensed', sans-serif" font-size="8.5" font-weight="400" letter-spacing="3" fill="#8aa8b8" text-anchor="middle">
+          <textPath href="#bot-arc" startOffset="50%">CALIFORNIA · OREGON · WASHINGTON</textPath>
+        </text>
+        <!-- Outer decorative marks -->
+        <g stroke="#c8922a" stroke-width="1" opacity="0.5">
+          <line x1="100" y1="4" x2="100" y2="10"/>
+          <line x1="100" y1="190" x2="100" y2="196"/>
+          <line x1="4" y1="100" x2="10" y2="100"/>
+          <line x1="190" y1="100" x2="196" y2="100"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-eyebrow">Aloran Federation — Federal Archive Record No. AF-001</div>
+    <h1 class="hero-title">Constitution of the<br/><em>Aloran Federation</em></h1>
+    <p class="hero-subtitle">The foundational law of the sovereign peoples of California, Oregon, and Washington</p>
+
+    <div class="hero-rule"></div>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <span class="label">Ratified</span>
+        <span class="value">March 15, 2031</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Effective</span>
+        <span class="value">June 1, 2031</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Member States</span>
+        <span class="value">California · Oregon · Washington</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Articles</span>
+        <span class="value">XIII + Preamble</span>
+      </div>
+      <div class="hero-meta-item">
+        <span class="label">Archive Classification</span>
+        <span class="value">Public — Unrestricted</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── FICTIONAL CONTEXT BAND ── -->
+  <div class="context-band">
+    <div class="context-inner">
+      <div class="context-icon">
+        <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="1" y="1" width="42" height="42" rx="2" stroke="#c8922a" stroke-width="1.2"/>
+          <line x1="8" y1="13" x2="36" y2="13" stroke="#8aa8b8" stroke-width="1"/>
+          <line x1="8" y1="20" x2="36" y2="20" stroke="#8aa8b8" stroke-width="1"/>
+          <line x1="8" y1="27" x2="28" y2="27" stroke="#8aa8b8" stroke-width="1"/>
+          <circle cx="34" cy="33" r="6" fill="#1a3d28" stroke="#c8922a" stroke-width="1"/>
+          <path d="M31 33 l2 2 4-4" stroke="#c8922a" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="context-label">Historical Context — Aloran Federal Archive, Department of Civic Memory — Compiled 2047</div>
+        <p class="context-text">
+          Following the <strong>Constitutional Dissolution of 2029</strong> — a period historians now refer to as the <em>Long Fracture</em> — the federal structures of the United States of America ceased to function as a unified national government. In the years that followed, several regional coalitions moved toward formal self-governance. The Pacific Coast states of <strong>California, Oregon, and Washington</strong>, long aligned on matters of environmental policy, labor rights, and democratic reform, formalized negotiations beginning in late 2029. After eighteen months of public deliberation, constitutional conventions, and three separate ratification referendums, the <strong>Aloran Federation</strong> (informally: <em>Alora</em>, pronounced AH-lore-ah) was declared a sovereign republic on <strong>March 15, 2031</strong>.
+        </p>
+        <p class="context-text" style="margin-top:0.75rem;">
+          The document reproduced here is the original ratified text, archived in full by the <strong>Aloran Federal Archive</strong> under Record No. AF-001. It remains the supreme law of the Federation as of this publication date. Seventeen years after ratification, the Aloran Federation stands as one of the largest economies of the former North American continent, with a population of approximately <strong>58 million citizens</strong> across its three member states. This document is preserved for public education, civic study, and the historical record.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FICTION DISCLAIMER ── -->
+  <div class="disclaimer-band">
+    <div class="disclaimer-inner">
+      <strong>Reader's note:</strong> The Aloran Federation is a work of speculative political fiction. This document is presented as a creative and intellectual exercise — a story, not a manifesto. It is not a call to political action of any kind.
+    </div>
+  </div>
+
+  <!-- ── PAGE LAYOUT ── -->
+  <div class="page-layout">
+
+    <!-- ── SIDEBAR TOC ── -->
+    <nav class="toc-sidebar" aria-label="Table of Contents">
+      <div class="toc-title">Table of Contents</div>
+      <ul class="toc-list">
+        <li><a href="#preamble" class="preamble-link"><span class="toc-num">—</span> Preamble</a></li>
+        <li><a href="#article-i"><span class="toc-num">I</span> Federal Union &amp; State Sovereignty</a></li>
+        <li><a href="#article-ia"><span class="toc-num">I-A</span> Sovereignty of the People</a></li>
+        <li><a href="#article-ii"><span class="toc-num">II</span> Rights and Liberties</a></li>
+        <li><a href="#article-iii"><span class="toc-num">III</span> Federal Assembly</a></li>
+        <li><a href="#article-iv"><span class="toc-num">IV</span> Direct Democracy</a></li>
+        <li><a href="#article-v"><span class="toc-num">V</span> Executive Branch</a></li>
+        <li><a href="#article-vi"><span class="toc-num">VI</span> Judicial Branch</a></li>
+        <li><a href="#article-vii"><span class="toc-num">VII</span> National Security &amp; Defense</a></li>
+        <li><a href="#article-viii"><span class="toc-num">VIII</span> Economy, Trade &amp; Currency</a></li>
+        <li><a href="#article-ix"><span class="toc-num">IX</span> Education &amp; Technology</a></li>
+        <li><a href="#article-x"><span class="toc-num">X</span> Environment &amp; Climate</a></li>
+        <li><a href="#article-xi"><span class="toc-num">XI</span> Indigenous Peoples &amp; Culture</a></li>
+        <li><a href="#article-xii"><span class="toc-num">XII</span> Amendment Procedure</a></li>
+        <li><a href="#article-xiii"><span class="toc-num">XIII</span> Transitional Provisions</a></li>
+        <li><a href="#closing"><span class="toc-num">—</span> Closing Declaration</a></li>
+      </ul>
+    </nav>
+
+    <!-- ── MAIN CONTENT ── -->
+    <main class="main-content">
+
+      <!-- PREAMBLE -->
+      <section class="preamble-section" id="preamble">
+        <div class="section-label">Preamble</div>
+        <h2 class="preamble-heading">In the name of the People of Alora</h2>
+        <p class="preamble-text">
+          We, the People of Alora, comprising the states of California, Oregon, and Washington, united in common purpose and shared values, do ordain and establish this Constitution for the Aloran Federation.
+        </p>
+        <p class="preamble-text">
+          This Federation stands not as a rejection of our shared past, but as our affirmation and the realization of the enduring spirit of the United States Constitution. For as even scholars observed the United States of America as a <em>"great experiment"</em> in self-governance and the pursuit of liberty, we declare the Aloran Federation to be the renewed embodiment of that profound endeavor.
+        </p>
+        <p class="preamble-text">
+          Our Federation is founded to secure liberty, justice, economic and environmental sustainability, and equality for ourselves and future generations. We understand that true liberty does not mean the absence of order, but the presence of a just and principled system where rights are real, enforceable, and balanced by shared responsibility.
+        </p>
+        <p class="preamble-text">
+          We affirm the principles of democracy, consensus-based governance, participatory and transparent government, and respect for human rights and the rule of law. Law exists to protect the freedoms of all, to restrain the misuse of power, and to ensure that when rights are violated, those responsible are held to account through fair and lawful means that serve justice, repair harm, and uphold the integrity of a free and civil society.
+        </p>
+        <p class="preamble-text">
+          In solemn agreement, we establish a federal union that preserves the unique identity and self-governance of each member state while empowering us to act collectively for the common good. By this act, we assume our rightful place among the sovereign nations of the world, committed to peace, freedom, and the well-being of all people.
+        </p>
+      </section>
+
+      <!-- ARTICLE I -->
+      <section class="article-section fade-in" id="article-i">
+        <div class="article-number">Article I</div>
+        <h2 class="article-heading">Federal Union and State Sovereignty</h2>
+        <p class="article-subheading">Establishment, member states, distribution of powers, and foundational principles of cooperative federalism</p>
+
+        <h3 class="section-heading">§1 — Establishment of the Federation</h3>
+        <p class="body-text">California, Oregon, and Washington hereby form a sovereign federal union known as the <strong>Aloran Federation</strong> (hereafter "the Federation"), also informally called <strong>Alora</strong> (AH·lore·ah). This Constitution is the supreme law of the Federation and establishes a federal republic grounded in the consent of the governed and the ideals set forth in the Preamble.</p>
+
+        <h3 class="section-heading">§2 — Member States and Identities</h3>
+        <p class="body-text">The member states — California, Oregon, and Washington — retain their internal governance and distinct identities. Each state continues to operate under its own constitution, laws, and elected authorities in all matters not delegated to the federal government by this Constitution. Nothing herein shall abolish or diminish the sovereignty, legislative authority, or cultural identity of the member states within their own jurisdictions.</p>
+
+        <h3 class="section-heading">§3 — Distribution of Powers</h3>
+        <p class="body-text">The powers of the federal government are those expressly enumerated in this Constitution. All other powers, rights, and privileges are reserved to the member states and the people. The Federation is entrusted with matters of common interest and national scope, including: national defense and security, foreign affairs and treaties, international trade, immigration and citizenship, currency and monetary policy, interstate commerce and infrastructure, environmental protection at the national level, and the safeguarding of fundamental rights.</p>
+        <p class="body-text">Each member state retains authority over local matters such as policing, education, healthcare, civil and criminal law, land use, and other internal affairs, except where federal law pursuant to this Constitution shall prevail.</p>
+
+        <h3 class="section-heading">§4 — Federal Supremacy</h3>
+        <p class="body-text">This Constitution and the laws and treaties of the Federation made in accordance with it shall be the supreme Law of the Land, binding on all member states and their subdivisions. A federal law shall preempt any state or local law only in areas within federal authority as defined by this Constitution. Outside those areas, the autonomy of state law is paramount.</p>
+
+        <h3 class="section-heading">§5 — Consensus and Cooperation</h3>
+        <p class="body-text">The Federation's governance shall operate on the basis of <strong>consensus, cooperation, and mutual respect</strong> among its member states and political groups. Federal institutions shall strive for policies that have broad support across the diverse peoples and regions of Alora. Major decisions impacting the fundamental interests of a member state shall not be imposed without that state's consent, except as provided by supermajority or other consensus mechanisms in this Constitution.</p>
+
+        <h3 class="section-heading">§6 — National Capital</h3>
+        <p class="body-text">The permanent seat of government of the Aloran Federation shall be selected by citizens through a national popular vote. The location receiving the highest number of votes shall be designated the National Capital. The national capital shall not be changed except by a similar democratic process or constitutional amendment.</p>
+
+        <h3 class="section-heading">§7 — Principles of Leadership and Authority</h3>
+        <ul class="provision-list">
+          <li data-n="A.">Leadership within the Aloran Federation shall not be regarded as a right of ambition, but as a privilege conferred through the conscious consent of the governed.</li>
+          <li data-n="B.">Eligibility for public authority shall rest upon demonstrated integrity, competence, and empathy, as recognized by one's community.</li>
+          <li data-n="C.">Authority, once granted, remains valid only so long as public trust is maintained.</li>
+          <li data-n="D.">The people retain the continual right to withdraw their consent should a leader betray that trust.</li>
+        </ul>
+      </section>
+
+      <!-- ARTICLE I-A -->
+      <section class="article-section fade-in" id="article-ia">
+        <div class="article-number">Article I-A</div>
+        <h2 class="article-heading">Sovereignty of the People and the Right to Self-Determination</h2>
+        <p class="article-subheading">Inherent power, participatory governance, lawful dissent, and the Aloran Federal Archive</p>
+
+        <div class="principle-block">
+          <p>Federation by force shall not be recognized; only union by consent and mutual obligation shall be deemed legitimate under this Constitution.</p>
+          <div class="attrib">Constitution of the Aloran Federation — Article I-A, §2</div>
+        </div>
+
+        <h3 class="section-heading">§1 — Inherent Power and Participatory Governance</h3>
+        <p class="body-text">All power resides inherently in the people. Government exists solely by the consent of the governed and is established to serve their collective well-being. The people of the Aloran Federation retain the sovereign right to directly shape their laws, institutions, and future, and to hold all public power accountable to the principles of justice, equity, and shared responsibility.</p>
+
+        <h3 class="section-heading">§2 — Right of Lawful Dissent, Democratic Reformation, and Peaceful Independence</h3>
+        <p class="body-text">The right of the people to dissent from unjust governance, and to reform or restructure institutions that no longer reflect the values of liberty, dignity, or the public interest, shall be regarded as inherent, continuous, and inviolable.</p>
+        <p class="body-text">Accordingly, any defined political or territorial entity within the Federation may lawfully initiate internal reorganization or declare independence through peaceful, transparent, and democratic means, subject to the following conditions:</p>
+        <ul class="provision-list">
+          <li data-n="1."><strong>Territorial Definition.</strong> The entity must possess clearly defined and contiguous geographic boundaries recognized under Aloran law as a coherent political, cultural, or administrative jurisdiction.</li>
+          <li data-n="2."><strong>Democratic Legitimacy.</strong> The process must include verified participation of at least 75% of all eligible registered voters within the territory, and a minimum three-fifths (60%) supermajority vote in favor of both the proposed change and a ratified founding charter.</li>
+          <li data-n="3."><strong>Protection of Rights and Dissent.</strong> The process must be entirely nonviolent and must respect the dignity and civil protections of all residents, including those in opposition. The people choosing to separate must also facilitate the freedom of dissenting individuals to reestablish themselves outside the proposed territory.</li>
+          <li data-n="4."><strong>Guarantee of Fundamental Rights.</strong> The resulting entity must enshrine fundamental human rights, democratic principles, and the rule of law. All residents shall retain Aloran citizenship by default.</li>
+          <li data-n="5."><strong>Public Documentation and Recordkeeping.</strong> A certified copy of the declaration and ratified charter shall be submitted to the Aloran Federal Archive for public record.</li>
+        </ul>
+
+        <h3 class="section-heading">§4 — Establishment of the Aloran Federal Archive</h3>
+        <p class="body-text">The Aloran Federal Archive is hereby established as a permanent civic institution dedicated to receiving, recording, and preserving the declarations, founding charters, and governance frameworks of any political or territorial entity that lawfully reorganizes or declares independence under this Constitution. Its purpose is strictly documentary and educational, not judicial or legislative. All entries shall be public and accessible.</p>
+      </section>
+
+      <!-- ARTICLE II -->
+      <section class="article-section fade-in" id="article-ii">
+        <div class="article-number">Article II</div>
+        <h2 class="article-heading">Rights and Liberties of the People</h2>
+        <p class="article-subheading">Fundamental rights, civil liberties, social and economic rights, and enforcement</p>
+
+        <div class="rights-grid">
+          <div class="right-card">
+            <div class="right-card-title">§1 — Fundamental Equality</div>
+            <p class="right-card-text">All persons within the Aloran Federation are free and equal under the law. No law shall discriminate on the basis of race, ethnicity, sex, gender identity, sexual orientation, religion, age, disability, or any other inherent characteristic.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">§2 — Life, Liberty &amp; Due Process</div>
+            <p class="right-card-text">Every person has the right to life, personal liberty, and security. No person shall be deprived of these without due process of law. Habeas corpus, protection against self-incrimination, and protection from double jeopardy are guaranteed.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">§3 — Freedom of Expression</div>
+            <p class="right-card-text">Freedoms of speech, press, conscience, and religion are inviolable. Every person has the right to freely speak, write, and access information without censorship. These rights extend to both physical and digital environments.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">§4 — Right to Bear Arms</div>
+            <p class="right-card-text">The right of the people to keep and bear arms is inherent and inalienable. Temporary restriction may occur only pursuant to individualized judicial findings based on clear evidence of danger to others. Permanent revocation of this right is prohibited.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">§5 — Privacy &amp; Security</div>
+            <p class="right-card-text">All people have the right to be secure in their persons, homes, communications, and digital data against unreasonable searches, seizures, or surveillance. Mass surveillance of the populace is prohibited.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">§6 — Fair Trial Rights</div>
+            <p class="right-card-text">The accused shall enjoy the right to a speedy and public trial, to be presumed innocent until proven guilty, to be informed of charges, to confront witnesses, and to have Assistance of Counsel. Cruel or unusual punishment is forbidden.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">§7 — Social &amp; Economic Rights</div>
+            <p class="right-card-text">Every person has the right to a basic standard of living including food, clean water, shelter, and healthcare. All workers have the right to a living wage, equal pay, collective bargaining, and the right to strike.</p>
+          </div>
+          <div class="right-card">
+            <div class="right-card-title">§10 — Secular Governance</div>
+            <p class="right-card-text">The Aloran Federation shall be a secular republic. No law or public policy shall be enacted, interpreted, or justified on the basis of religious doctrine. All laws shall be grounded in secular reasoning, universal ethical principles, and the common good.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">§9 — Enforcement of Rights</h3>
+        <p class="body-text">The rights and liberties guaranteed by this Constitution are directly enforceable in the courts of the Federation and of the member states. Any person claiming that a law, policy, or action of any authority violates the rights enshrined herein shall have standing to bring a claim in a court of competent jurisdiction. The judiciary shall interpret these rights broadly, in light of their purpose and intent, to provide the fullest protection.</p>
+      </section>
+
+      <!-- ARTICLE III -->
+      <section class="article-section fade-in" id="article-iii">
+        <div class="article-number">Article III</div>
+        <h2 class="article-heading">The Federal Assembly</h2>
+        <p class="article-subheading">Legislative branch — composition, ideological party representation, powers, and procedures</p>
+
+        <h3 class="section-heading">§1 — Establishment of the Federal Assembly</h3>
+        <p class="body-text">All legislative powers of the Aloran Federation herein granted shall be vested in the <strong>Federal Assembly</strong>. The Assembly is the representative law-making body of the Federation, empowered to enact federal statutes, appropriate funds, levy taxes, declare war and peace (subject to defense restrictions), ratify treaties, and oversee the Executive branch.</p>
+
+        <h3 class="section-heading">§2 — Ideological Party Representation</h3>
+        <p class="body-text">Elections for the Assembly shall not follow traditional geographic districts. Instead, any political party representing a defined ideological or policy platform, and which has <strong>at least 1,000 registered citizen members</strong>, shall be entitled to equal representation in the Assembly — two (2) seats per qualified party.</p>
+        <p class="body-text">This structure guarantees that any substantial ideological movement with public support can attain a voice in the national legislature, eliminating winner-take-all outcomes and fostering a multiparty, consensus-driven democracy grounded in earned legitimacy rather than imposed authority.</p>
+
+        <h3 class="section-heading">§3 — Selection, Legitimacy, and Term</h3>
+        <p class="body-text">Each qualifying party selects its two Assembly members through democratic procedures that are fair, transparent, and open to all registered members of the Party. Assembly members serve a term of <strong>three (3) years</strong>, or until recalled through a properly conducted vote of No Confidence by the Party's members. Every eight (8) years, each qualified Party undergoes a formal review to ensure continued eligibility and representational legitimacy.</p>
+
+        <h3 class="section-heading">§4 — Powers and Procedures</h3>
+        <p class="body-text">Legislative action shall require the affirmative vote of a <strong>three-fifths (3/5) majority</strong> of all members of the Assembly, unless otherwise specified. The Assembly shall, as a matter of principle, strive to achieve unanimity or the broadest possible consensus across ideological lines. Sessions shall be open to the public and accessible in form. The Assembly shall keep and publish a journal of its proceedings and all votes taken.</p>
+        <p class="body-text">No Assembly rule or act shall override, nullify, or hinder the processes of direct democracy established in Article IV. Measures enacted by initiative or referendum may only be amended or repealed if the initiative itself explicitly allows it, or by a constitutional amendment approved by the people.</p>
+
+        <h3 class="section-heading">§8 — Ideological Diversity and Minority Voice</h3>
+        <p class="body-text">The Assembly's procedures shall ensure that smaller parties and minority viewpoints have a fair opportunity to debate and contribute to legislation. No single party or group shall hold more than their allotment of seats; coalition governance and power-sharing are encouraged to reflect the pluralism of Aloran society.</p>
+
+        <h3 class="section-heading">§9 — Legislative Transparency and Integrity</h3>
+        <p class="body-text">All proceedings shall be broadcast and recorded for public access. Lobbying activities must be regulated by law to ensure transparency. Assembly members must disclose financial or personal interests in matters they vote on. Corrupt practices — such as bribery, embezzlement, or vote trading — are prohibited and subject to criminal penalties. The Assembly shall create an independent <strong>Ethics Commission</strong> to oversee member conduct.</p>
+      </section>
+
+      <!-- ARTICLE IV -->
+      <section class="article-section fade-in" id="article-iv">
+        <div class="article-number">Article IV</div>
+        <h2 class="article-heading">Direct Democracy and Citizen Initiative</h2>
+        <p class="article-subheading">Initiative, referendum, and recall — the sovereign power of the Aloran people</p>
+
+        <div class="principle-block">
+          <p>The initiative and referendum process is a fundamental aspect of governance in Alora, and so all officials must respect and uphold the outcomes of direct votes, recognizing them as the direct voice of the sovereign people.</p>
+          <div class="attrib">Constitution of the Aloran Federation — Article IV, §7</div>
+        </div>
+
+        <h3 class="section-heading">§1 — Sovereignty of the People</h3>
+        <p class="body-text">In the Aloran Federation, all sovereign power resides ultimately in the people, who delegate authority to governments but retain the right to make law directly. The citizens of Alora shall have the power to directly propose, enact or reject laws, and to approve amendments to this Constitution, through the processes of initiative and referendum described herein.</p>
+
+        <h3 class="section-heading">§2 — Federal Initiative Process</h3>
+        <p class="body-text">An initiative may be placed on the federal ballot by filing a petition containing the full text of the proposed law or amendment and the signatures of not less than <strong>8% of the national electorate</strong>. Alternatively, if the same measure has been approved by a majority vote in any one member state through that state's initiative or legislative process, such approval shall suffice to qualify the measure for a federal ballot, bypassing the signature requirement.</p>
+
+        <h3 class="section-heading">§3 — Federal Referendum Process</h3>
+        <p class="body-text">Citizens have the right to demand a referendum on a law by filing a petition within a reasonable time after the law's passage, with signatures numbering no less than <strong>5% of the electorate</strong>. When a valid referendum petition is filed, the challenged law shall be suspended from taking effect until the voters approve it. The Federal Assembly cannot override the result of a referendum.</p>
+
+        <h3 class="section-heading">§4 — Approval Thresholds</h3>
+        <p class="body-text">For an ordinary federal statute, a simple majority of votes cast shall be sufficient, provided the measure also obtains at least <strong>25% of the State Electorate in two of the three member states</strong>. If an initiative was triggered by one state's majority vote, it shall require at least a two-thirds supermajority of the national popular vote to become federal law.</p>
+
+        <h3 class="section-heading">§8 — Recall of Officials</h3>
+        <p class="body-text">The people of Alora reserve the power to recall elected officials of the federal government. By a recall petition of sufficient voters (equal to 10% of the electorate that voted in the last election for that office), the question of whether to remove a particular official shall be placed on the ballot. If a majority votes to recall the official, that office shall be declared vacant and filled as provided by this Constitution or by law.</p>
+      </section>
+
+      <!-- ARTICLE V -->
+      <section class="article-section fade-in" id="article-v">
+        <div class="article-number">Article V</div>
+        <h2 class="article-heading">Executive Branch</h2>
+        <p class="article-subheading">The Federal Council and collective presidency — consensus leadership for a diverse federation</p>
+
+        <h3 class="section-heading">§1 — Collective Executive Power</h3>
+        <p class="body-text">The executive power of the Aloran Federation shall be vested in a <strong>Federal Executive Council</strong> (hereafter the Federal Council), which shall serve collectively as the Head of State and Head of Government of the Federation. Executive authority shall be exercised by the Council as a whole, embodying consensus leadership and representation from the Federation's diverse states and political perspectives.</p>
+
+        <h3 class="section-heading">§2 — Composition of the Federal Council</h3>
+        <p class="body-text">The Federal Council shall consist of <strong>five (5) Councilors</strong>, elected by the Federal Assembly by proportional or concurrent vote, ensuring that no single political party or group holds all seats. At least one Councilor must come from each member state — California, Oregon, and Washington — to guarantee geographic inclusion. The term of each Councilor shall be four (4) years.</p>
+
+        <h3 class="section-heading">§3 — Council Presidency and Procedure</h3>
+        <p class="body-text">The Council shall select from among its members a <strong>President of the Federation</strong> (also referred to as the Prime Speaker or Council President), who serves as chairperson and represents the Federation ceremonially. The Presidency may rotate among members on an annual basis. The Council President is not a singular head of state with independent power; all significant decisions are made by the Council acting collectively.</p>
+        <p class="body-text">The Council strives for unanimous or consensus decisions on all executive actions. When a vote is necessary, a majority of Councilors (3 out of 5) shall suffice for routine matters, while important decisions — such as going to war, issuing significant executive orders, or emergency measures — should preferably have at least 4 out of 5 in support.</p>
+
+        <h3 class="section-heading">§4 — Responsibilities of the Federal Council</h3>
+        <p class="body-text">The Federal Council shall be responsible for: faithful execution of laws; civilian command of the Aloran Defense Forces; formulation of foreign policy and treaty negotiations; appointment of senior federal officers (subject to Assembly confirmation); preparation and management of the annual federal budget; emergency powers (subject to strict Assembly oversight); and regular reporting to the Assembly on the state of the Federation.</p>
+
+        <div class="oath-box">
+          <p class="oath-text">I do solemnly swear (or affirm) that I will faithfully execute the duties of a Federal Council member of the Aloran Federation, and will to the best of my ability preserve, protect, and defend the Constitution of the Aloran Federation, and serve the people of California, Oregon, Washington, and all of Alora with integrity and justice.</p>
+          <div class="oath-source">Article V, §8 — Oath of Office of Federal Councilors</div>
+        </div>
+
+        <h3 class="section-heading">§7 — Removal and Vacancies</h3>
+        <p class="body-text">A member of the Federal Council may be removed from office before the end of their term for serious cause — gross misconduct, violation of the Constitution, commission of a serious crime, or inability to perform duties. The Federal Assembly may, by a <strong>two-thirds majority vote</strong>, adopt a resolution of no confidence or impeachment against a Councilor. Citizens also retain the power of recall as provided in Article IV.</p>
+      </section>
+
+      <!-- ARTICLE VI -->
+      <section class="article-section fade-in" id="article-vi">
+        <div class="article-number">Article VI</div>
+        <h2 class="article-heading">Judicial Branch</h2>
+        <p class="article-subheading">Independent judiciary, Supreme Court of Alora, judicial review, and open justice</p>
+
+        <h3 class="section-heading">§1 — Judicial Power and Independence</h3>
+        <p class="body-text">The judicial power of the Aloran Federation is vested in a <strong>Supreme Court of Alora</strong> and in such inferior federal courts as the Federal Assembly may establish. The judiciary shall be independent of the legislative and executive branches, and shall impartially uphold the rule of law and the rights guaranteed by this Constitution. Judges are subject only to the Constitution and the laws made in accordance with it.</p>
+
+        <h3 class="section-heading">§2 — Supreme Court</h3>
+        <p class="body-text">The Supreme Court of Alora is the highest court in the Federation. It shall consist of <strong>nine (9) Justices</strong>, one of whom is the Chief Justice. Justices are appointed by the Federal Council with the advice and consent of the Federal Assembly, requiring a three-fifths majority for confirmation to encourage consensus. Justices serve lifetime terms to insulate them from political pressure. The Supreme Court's interpretations of this Constitution are binding on all other courts and authorities.</p>
+
+        <h3 class="section-heading">§5 — Judicial Review</h3>
+        <p class="body-text">The courts of the Aloran Federation, and ultimately the Supreme Court, have the power of <strong>judicial review</strong> — the authority to determine the constitutionality of legislative and executive acts. If a court finds that any law, regulation, or official act violates this Constitution, the court may strike down or nullify that law to the extent of the inconsistency. In exercising judicial review, courts may also consider, as persuasive authority, international human rights norms and comparative constitutional jurisprudence.</p>
+
+        <h3 class="section-heading">§10 — Open Justice</h3>
+        <p class="body-text">Judicial proceedings in the Federation shall generally be open to the public to ensure transparency and accountability. Judgments shall be published with reasons. In certain sensitive cases, a court may order proceedings to be closed to protect privacy or security, but even then an appropriately redacted explanation of the court's decision should be made public as soon as reasonable.</p>
+
+        <h3 class="section-heading">§11 — Judicial Qualifications</h3>
+        <p class="body-text">Judges shall be persons of sound character, demonstrated impartiality, and a deep commitment to justice, fairness, and the rule of law. They must be capable of weighing competing interests with integrity, seeing multiple perspectives, and seeking paths of resolution that honor both the law and the dignity of all parties — with an understanding that justice includes restoration, accountability, and human growth.</p>
+      </section>
+
+      <!-- ARTICLE VII -->
+      <section class="article-section fade-in" id="article-vii">
+        <div class="article-number">Article VII</div>
+        <h2 class="article-heading">National Security and Defense</h2>
+        <p class="article-subheading">The Aloran Defense Forces, civilian control, defense philosophy, and veterans' obligations</p>
+
+        <h3 class="section-heading">§1 — Defense Philosophy</h3>
+        <p class="body-text">The Aloran Federation's defense and security policies shall be guided by the principle that the use of military force is solely for defense and protection — of our people, our constitutional order, and our allies — and never for aggression or conquest. The Federation is committed to peaceful coexistence with all nations and will pursue diplomatic solutions to conflicts wherever possible. We renounce the use of weapons of mass destruction except as a last resort deterrent if ever faced with existential threat.</p>
+
+        <h3 class="section-heading">§3 — Aloran Defense Forces (ADF)</h3>
+        <p class="body-text">The existing National Guard units of California, Oregon, and Washington, along with any other federal military assets, are hereby transformed and integrated into a single national military force known as the <strong>Aloran Defense Forces (ADF)</strong>. The ADF shall include land, air, sea, space, and cyber defense components as necessary, organized under one federal command structure under civilian leadership.</p>
+        <p class="body-text">The ADF shall be a professional, volunteer military (unless a draft is reinstated by law in dire need), and it shall strive to reflect the diversity of the Aloran people in its ranks and leadership.</p>
+
+        <h3 class="section-heading">§6 — Declaration of War and Use of Force</h3>
+        <p class="body-text">The power to declare war or authorize the use of military force (beyond immediate self-defense) lies with the <strong>Federal Assembly</strong>. The Federal Council may respond with defensive actions if an attack occurs or is imminent, but must seek Assembly approval as soon as practicable for any sustained military campaign. There shall be no secret commitments to war; all military engagements must be transparently justified to the public.</p>
+
+        <h3 class="section-heading">§10 — Veterans and Military Families</h3>
+        <p class="body-text">The Federation recognizes its obligation to those who serve in the defense forces. Veterans of the ADF shall be honored for their service and provided with support, including healthcare (physical and mental), rehabilitation, education, and job opportunities, to ease their transition to civilian life. Families of active-duty service members shall also receive appropriate support and protections.</p>
+      </section>
+
+      <!-- ARTICLE VIII -->
+      <section class="article-section fade-in" id="article-viii">
+        <div class="article-number">Article VIII</div>
+        <h2 class="article-heading">Economy, Trade, and Currency</h2>
+        <p class="article-subheading">Economic justice, free trade, the Aloran Reserve Bank, and open borders with neighboring nations</p>
+
+        <h3 class="section-heading">§1 — Economic Principles and Justice</h3>
+        <p class="body-text">The Aloran Federation is committed to an economic system that serves the public good and promotes economic justice. Free enterprise and entrepreneurship shall be encouraged, but the Federation may regulate commerce and industry to prevent exploitation, monopoly, and harm to the community. The economy should be managed to ensure stable and equitable growth, full employment to the extent possible, and a reasonable distribution of wealth.</p>
+
+        <h3 class="section-heading">§3 — Currency and Monetary Framework</h3>
+        <p class="body-text">The official currency of the Aloran Federation shall be the <strong>United States Dollar (USD)</strong>, providing continuity, macroeconomic stability, and international integration through a well-established global currency.</p>
+        <p class="body-text">The Federal Assembly shall establish the <strong>Aloran Reserve Bank (ARB)</strong> as an independently operated public financial institution — publicly owned and managed, independent from partisan control. The ARB shall develop a secure, blockchain-based digital infrastructure for a future national digital currency known as <strong>Aloran Credits (ALC)</strong>, along with a mobile banking and payment platform to ensure financial inclusion. The ARB shall not issue currency nor exercise full monetary authority until the transition is ratified by the public.</p>
+
+        <h3 class="section-heading">§4 — Trade and Commerce</h3>
+        <p class="body-text">The Federation will maintain an open internal market wherein goods, services, and capital can flow freely among the member states without tariffs or trade barriers. Externally, Alora shall uphold permanent free trade with Canada, Mexico, and the United States, seeking to join or establish an arrangement equivalent to the USMCA.</p>
+
+        <h3 class="section-heading">§5 — Open Borders and Freedom of Movement</h3>
+        <p class="body-text">The Aloran Federation is committed to open borders with neighboring countries — the United States, Canada, and Mexico — meaning the free movement of people for travel, tourism, work, and residence, subject to reasonable regulations. The aim is for an arrangement analogous to the EU's Schengen Area within North America, fostering greater freedom and regional integration, managed with cooperation on security and consistent with international humanitarian law for refugees.</p>
+      </section>
+
+      <!-- ARTICLE IX -->
+      <section class="article-section fade-in" id="article-ix">
+        <div class="article-number">Article IX</div>
+        <h2 class="article-heading">Education, Knowledge, and Technology</h2>
+        <p class="article-subheading">National Education Alliance, academic freedom, AI policy, digital rights, and lifelong learning</p>
+
+        <h3 class="section-heading">§1 — National Education Alliance</h3>
+        <p class="body-text">The Aloran Federation shall establish and maintain a <strong>National Public Education Alliance</strong> in partnership with the member states — a collaborative framework, not a centralized bureaucracy. The Alliance's mission is to ensure a high standard of education for all children and learners across Alora, coordinating efforts on curriculum innovation, resource sharing, and educational reform, with emphasis on:</p>
+        <ul class="provision-list">
+          <li data-n="●">Critical Thinking — developing curricula that emphasize critical thinking skills, problem-solving, and the ability to analyze information and discern truth in an age of abundant information.</li>
+          <li data-n="●">Emotional Intelligence — incorporating social-emotional learning into school programs, teaching empathy, self-awareness, and interpersonal skills.</li>
+          <li data-n="●">Human Development — embracing a holistic view of education that nurtures creativity, physical health, civic knowledge, and ethical values.</li>
+        </ul>
+
+        <h3 class="section-heading">§2 — Right to Education</h3>
+        <p class="body-text">Every person in Alora has the right to a quality education. This right begins from early childhood through at least secondary level, which shall be <strong>free and available to all</strong>. The Federation and the states share an obligation to make higher education — including vocational training, college, and beyond — accessible and affordable to all qualified students, using measures like public universities, scholarships, and financial aid such that no one is barred from education due to financial hardship.</p>
+
+        <h3 class="section-heading">§5 — Technology and Artificial Intelligence Policy</h3>
+        <p class="body-text">The Aloran Federation embraces technological advancement as a means to improve human life. Artificial intelligence and related emerging technologies shall be developed and deployed with a guiding principle: <strong>technology must augment, not replace, human capabilities and opportunity</strong>.</p>
+        <p class="body-text">The Federation shall establish an <strong>AI and Technology Commission</strong>, composed of technologists, ethicists, representatives of labor and business, and citizen advocates, to continuously study the societal impact of AI and recommend regulations or initiatives. High-risk AI technologies — such as autonomous lethal weapons or mass surveillance algorithms — may be banned or strictly controlled.</p>
+
+        <h3 class="section-heading">§8 — Lifelong Learning</h3>
+        <p class="body-text">The Federation and states shall facilitate lifelong learning opportunities, enabling adults to upskill, retrain, or pursue personal development throughout their lives. Community colleges, vocational institutes, online learning platforms, and libraries will be supported to provide accessible continuing education — especially critical in light of technological change due to AI and automation, ensuring no one is left behind.</p>
+      </section>
+
+      <!-- ARTICLE X -->
+      <section class="article-section fade-in" id="article-x">
+        <div class="article-number">Article X</div>
+        <h2 class="article-heading">Environmental Protection and Climate Action</h2>
+        <p class="article-subheading">Public trust in natural resources, climate mandates, environmental justice, and Alora's global role</p>
+
+        <div class="principle-block">
+          <p>The natural resources of Alora — its waters, air, forests, wildlife, coastline, and other vital ecosystems — are held in public trust for current and future generations.</p>
+          <div class="attrib">Constitution of the Aloran Federation — Article X, §1</div>
+        </div>
+
+        <h3 class="section-heading">§1 — Right to a Healthy Ecosystem</h3>
+        <p class="body-text">All people of the Aloran Federation have the right to a clean and healthy environment, including pure water, clean air, healthy ecosystems, and a naturally stable climate. This right encompasses the preservation of the natural, scenic, cultural, and recreational qualities of the environment. Any citizen shall have standing to enforce this right against governmental or private entities that violate it.</p>
+
+        <h3 class="section-heading">§3 — Climate Action Mandates</h3>
+        <p class="body-text">The Aloran Federation recognizes that climate change poses an existential threat and commits to aggressive action to mitigate and adapt. The Federation shall implement policies to achieve, at minimum:</p>
+        <ul class="provision-list">
+          <li data-n="→">A reduction in greenhouse gas emissions to at least <strong>80% below 1990 levels by the year 2050</strong></li>
+          <li data-n="→">Intermediate targets of 45% below 1990 levels by 2035</li>
+          <li data-n="→">Net-zero GHG emissions by mid-century or sooner in accordance with the latest scientific consensus</li>
+          <li data-n="→">Transition to 100% clean and innovative renewable energy, including Fusion, for electricity and transportation</li>
+        </ul>
+
+        <h3 class="section-heading">§6 — Sustainable Development and Green Economy</h3>
+        <p class="body-text">The Federation shall promote forms of development that are environmentally sustainable and regenerative, designed to work with nature not against her. A <strong>just transition</strong> for workers and communities currently dependent on fossil fuel industries will be provided: investment in those communities, retraining programs, and economic diversification, so that environmental progress does not leave certain groups behind.</p>
+
+        <h3 class="section-heading">§8 — Environmental Justice and Participation</h3>
+        <p class="body-text">The Federation and states shall prioritize environmental justice — ensuring no community, especially low-income or minority communities, is disproportionately burdened by environmental hazards. There shall be equitable access to clean water, air, and green space for all communities. Government must actively engage communities in environmental planning decisions that affect them.</p>
+      </section>
+
+      <!-- ARTICLE XI -->
+      <section class="article-section fade-in" id="article-xi">
+        <div class="article-number">Article XI</div>
+        <h2 class="article-heading">Indigenous Peoples and Cultural Diversity</h2>
+        <p class="article-subheading">Indigenous sovereignty, multilingual society, cultural rights, and participatory governance</p>
+
+        <h3 class="section-heading">§1 — Recognition of Indigenous Nations</h3>
+        <p class="body-text">The Aloran Federation recognizes and respects the <strong>inherent sovereignty of the Indigenous peoples and Tribal Nations</strong> whose ancestral lands lie within the territory of Alora. This sovereignty predates the formation of Alora and is acknowledged as a fundamental aspect of our constitutional order. The Federation affirms that Indigenous Nations have the right of self-determination and self-government over their internal affairs, and it will honor all treaties, agreements, and obligations inherited from the United States or entered into by the Federation with these Nations.</p>
+
+        <h3 class="section-heading">§3 — Indigenous Rights and Protections</h3>
+        <p class="body-text">Indigenous peoples have the right to preserve and practice their cultures, religions, and languages, and to maintain their distinctive spiritual and material relationship with their traditionally owned or occupied lands. Sacred sites and culturally significant places shall be protected in consultation with the relevant Indigenous communities. Intellectual property derived from Indigenous heritage shall be safeguarded from exploitation without permission and benefit-sharing.</p>
+
+        <h3 class="section-heading">§6 — Multilingual Society and Official Languages</h3>
+        <p class="body-text"><strong>English and Spanish</strong> are both recognized as official languages of the Federation's government. All federal public services, documents, and legislation shall be made accessible in both languages. In regions where other languages are prevalent — including Indigenous languages such as Yakama, Salish, and others; or other widely spoken community languages — the government shall take reasonable steps to provide key information and services in those languages. No person shall be denied participation in civic life due to language barriers.</p>
+
+        <h3 class="section-heading">§7 — Language Rights and Preservation</h3>
+        <p class="body-text">Indigenous languages are a precious part of Alora's heritage. The Federation and states shall make efforts to preserve and revitalize Indigenous languages, supporting bilingual education programs in tribal and public schools, training and hiring teachers of Indigenous languages, and recognizing Indigenous place names officially alongside English names, or as replacements where appropriate. <strong>American Sign Language (ASL)</strong> is recognized as a language of the deaf community and shall be provided for in public communications and education.</p>
+
+        <h3 class="section-heading">§10 — Non-Discrimination and Inclusion</h3>
+        <p class="body-text">The Federation shall combat discrimination and promote inclusion in all spheres. Government institutions should reflect the diversity of Alora in their staffing and leadership. There shall be offices or commissions dedicated to civil rights enforcement and protection of minorities, including racial, religious, LGBTQ+, and persons with disabilities. The Federation declares itself a <strong>refuge of tolerance and inclusion</strong>, where multiple identities coexist under the shared values of democracy and human rights.</p>
+      </section>
+
+      <!-- ARTICLE XII -->
+      <section class="article-section fade-in" id="article-xii">
+        <div class="article-number">Article XII</div>
+        <h2 class="article-heading">Amendment of the Constitution</h2>
+        <p class="article-subheading">Proposal, ratification, public deliberation, and protection of the federal structure</p>
+
+        <h3 class="section-heading">§1 — Amendment Power</h3>
+        <p class="body-text">This Constitution is the supreme expression of the will of the people of Alora, yet it is understood that over time, adjustments may be necessary. The power to amend this Constitution resides with the sovereign people of the Aloran Federation, exercising it either through their directly elected representatives or by direct vote. No amendment shall deprive the people of fundamental rights or the democratic form of government established herein.</p>
+
+        <h3 class="section-heading">§2 — Proposal of Amendments</h3>
+        <p class="body-text">An amendment may be proposed by any of the following methods:</p>
+        <ul class="provision-list">
+          <li data-n="(a)"><strong>Federal Assembly Proposal:</strong> A proposal by the Federal Assembly, with at least a two-thirds majority vote of all members in favor.</li>
+          <li data-n="(b)"><strong>Citizen Initiative:</strong> A proposal by the people through the federal initiative process, with signatures equivalent to at least 8% of the national electorate, or triggered by a majority vote in any one member state.</li>
+          <li data-n="(c)"><strong>Member State Resolution:</strong> A proposal initiated if the legislatures of all three member states each pass resolutions calling for a particular constitutional amendment.</li>
+        </ul>
+
+        <h3 class="section-heading">§3 — Ratification of Amendments</h3>
+        <p class="body-text">To become effective, a proposed constitutional amendment must be ratified by the people of Alora in a referendum, meeting the following conditions:</p>
+        <ul class="provision-list">
+          <li data-n="①">A <strong>two-thirds (2/3) supermajority</strong> of the votes cast nationwide must be in favor of the amendment.</li>
+          <li data-n="②">The amendment must receive a <strong>majority of votes in each member state</strong> separately — California, Oregon, and Washington must each individually ratify.</li>
+        </ul>
+        <p class="body-text" style="margin-top:1rem;">These requirements ensure that no state's fundamental interests are overridden by the others in changing the foundational pact of the Federation.</p>
+      </section>
+
+      <!-- ARTICLE XIII -->
+      <section class="article-section fade-in" id="article-xiii">
+        <div class="article-number">Article XIII</div>
+        <h2 class="article-heading">Transitional Provisions</h2>
+        <p class="article-subheading">Implementation timeline, provisional government, continuity of laws, and expiration of transitional authority</p>
+
+        <p class="body-text">The Transitional Provisions lay out how the new constitutional system was implemented and how the bridge from previous arrangements to the Aloran Federation's established government was constructed. These provisions were temporary in nature and, unless otherwise stated, expired once their effect was achieved. The following archive summary is provided for historical completeness.</p>
+
+        <h3 class="section-heading">§1 — Ratification</h3>
+        <p class="body-text">This Constitution came into effect upon ratification by the people of all three member states, indicated by a majority of votes cast in favor in each state, certified by each state's election authority. Ratification votes were held simultaneously across all three states on <strong>March 15, 2031</strong>.</p>
+
+        <h3 class="section-heading">§2 — Implementation Timeline</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-when">Within 30 days of ratification</div>
+            <p class="timeline-text">Member states' governors convened the Transitional Federal Council and Transitional Federal Assembly.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-when">Within 60 days</div>
+            <p class="timeline-text">Citizens began registering membership in ideological groups for Assembly representation.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-when">Within 90 days</div>
+            <p class="timeline-text">Initial tally of group memberships conducted to allocate seats in the first permanent Federal Assembly.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-when">Within 120 days</div>
+            <p class="timeline-text">First Federal Assembly convened; first regular Federal Council elected; national vote to choose the capital organized.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-when">Within 6 months</div>
+            <p class="timeline-text">Judicial transition completed; Supreme Court of Alora seated and operational.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-when">By one year from ratification</div>
+            <p class="timeline-text">All permanent institutions operational; all transitional bodies formally dissolved.</p>
+          </div>
+        </div>
+
+        <h3 class="section-heading">§5 — Continuity of Laws and Government</h3>
+        <p class="body-text">On the date of ratification, existing laws of the states and applicable U.S. federal laws remained in effect within each state's territory except where they directly conflicted with this Constitution or were superseded by new federal laws. This ensured no legal vacuum arose. All officials of the states continued in their roles. Powers exclusively federal under this Constitution were assumed by the Federation, and all international arrangements were communicated to other nations and organizations.</p>
+
+        <h3 class="section-heading">§13 — Expiration of Transitional Provisions</h3>
+        <p class="body-text">These Transitional Provisions were designed to self-terminate. An official declaration was made that the transition was complete within one year of the first Federal Assembly convening. Article XIII is retained in this Archive as a historical record of the Federation's founding processes.</p>
+      </section>
+
+      <!-- CLOSING -->
+      <section class="closing-section" id="closing">
+        <p class="closing-text">
+          Thus, with profound respect for the guiding principles of justice and liberty, we mutually pledge to each other our commitment to this Constitution. The Aloran Federation is hereby established, built on the foundations of state autonomy, popular consensus, representation of all voices, individual liberty, the rule of law, and a dedication to peace, prosperity, and sustainability.
+        </p>
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--mist); font-style:italic; text-align:center; margin-bottom:0.5rem;">
+          May this Constitution endure through the ages as a testament to what the free people of California, Oregon, and Washington — now united as one nation — can achieve together.
+        </p>
+
+        <div class="hero-rule" style="margin:2.5rem auto;"></div>
+
+        <div class="closing-signatories">
+          <div class="signatory">
+            <div class="signatory-line"></div>
+            <div class="signatory-name">People of California</div>
+            <div class="signatory-title">Founding Member State</div>
+          </div>
+          <div class="signatory">
+            <div class="signatory-line"></div>
+            <div class="signatory-name">People of Oregon</div>
+            <div class="signatory-title">Founding Member State</div>
+          </div>
+          <div class="signatory">
+            <div class="signatory-line"></div>
+            <div class="signatory-name">People of Washington</div>
+            <div class="signatory-title">Founding Member State</div>
+          </div>
+        </div>
+
+        <p style="font-family:'Barlow Condensed',sans-serif; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--mist); text-align:center; margin-top:3rem;">
+          Ratified March 15, 2031 &nbsp;·&nbsp; Aloran Federal Archive Record No. AF-001 &nbsp;·&nbsp; Archived for Perpetuity
+        </p>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">Aloran Federal Archive</div>
+      <div class="footer-address">
+        Office of Constitutional Records &nbsp;·&nbsp; Department of Civic Memory<br/>
+        National Capital of the Aloran Federation &nbsp;·&nbsp; Established 2031 AE
+      </div>
+      <div class="footer-rule"></div>
+      <div class="footer-copy">© 2048 Aloran Federal Archive — All constitutional records are public domain under the Freedom of Information and Civic Access Act (FICAA), 2033.</div>
+      <div class="footer-fiction-note">This entire document is a work of speculative fiction. The Aloran Federation does not exist. This is a creative and intellectual project — not a call for political action.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll-triggered fade-in for article sections
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Highlight active TOC link on scroll
+    const sections = document.querySelectorAll('section[id]');
+    const tocLinks = document.querySelectorAll('.toc-list a');
+
+    const activateLink = () => {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+      });
+      tocLinks.forEach(link => {
+        link.style.color = '';
+        link.style.background = '';
+        if (link.getAttribute('href') === '#' + current) {
+          link.style.color = 'var(--gold-light)';
+          link.style.background = 'rgba(200,146,42,0.1)';
+        }
+      });
+    };
+
+    window.addEventListener('scroll', activateLink, { passive: true });
+  </script>
+</body>
+</html>
